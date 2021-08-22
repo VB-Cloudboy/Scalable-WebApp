@@ -21,12 +21,34 @@ terraform {
   }
 }
 
+# ------------------------------------------------------------------------------
+# DECLARING LOCAL VALUES
+# ------------------------------------------------------------------------------
+
+locals {
+  
+  common_tags = {
+    environment   = "Development"
+    owner         = "Vijay Borkar"
+    type          = "Web-App"
+    subscription  = "MSDN" 
+
+  }
+
+}
+
 
 #-----------------------------------------------------------------------------
 # RESOURCE GROUP SETUP
 #----------------------------------------------------------------------------
 
-
+module "res_grp_01" {
+  source      = "./modules/tf-az-rg"
+  rgname      = var.rg_name
+  rglocation  = var.rg_location
+  rgtags      = local.common_tags
+  
+}
 
 
 #-----------------------------------------------------------------------------
