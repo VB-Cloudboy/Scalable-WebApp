@@ -15,3 +15,5 @@ terraform.tfstate.backup
 .vscode
 .vscode/*
 temp.txt
+provider.tf
+
