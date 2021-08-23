@@ -16,7 +16,25 @@ variable "rg_location" {
 # AZURE DNS (Domain Name Service) VARIABLE DECLARATION
 #----------------------------------------------------------------------------
 
+variable "pub_dnszone01_name" {
+    type = string
+    description = "(Required) The name of the DNS Zone. Must be a valid domain name." 
+}
 
+variable "pub_dnszone01_a_record" {
+    type = map
+    description = "List of A records in an DNS zone, as defined below."  
+
+  
+}
+
+variable "pub_dnszone01_cname_record" {
+    type = map
+    description = "List of CNAME records in an DNS zone, as defined below."  
+
+  
+  
+}
 
 #-----------------------------------------------------------------------------
 # AZURE FRONT DOOR VARIABLE DECLARATION

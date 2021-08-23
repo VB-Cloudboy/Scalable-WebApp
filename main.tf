@@ -37,7 +37,6 @@ locals {
 
 }
 
-
 #-----------------------------------------------------------------------------
 # RESOURCE GROUP SETUP
 #----------------------------------------------------------------------------
@@ -50,11 +49,21 @@ module "res_grp_01" {
   
 }
 
-
 #-----------------------------------------------------------------------------
 # AZURE DNS (Domain Name Service) SETUP
 #----------------------------------------------------------------------------
 
+module "pub_dns_01" {
+  source = "./modules/tf-az-dns"
+  depends_on = [
+    module.res_grp_01
+  ]
+  dnsname = var.pub_dnszone01_name
+  dnsresgrp = var.rg_name
+  dnstags = local.common_tags
+  dns_a_record = var.pub_dnszone01_a_record
+  dns_cname_record = var.pub_dnszone01_cname_record
+}
 
 
 #-----------------------------------------------------------------------------

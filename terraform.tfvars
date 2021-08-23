@@ -8,7 +8,18 @@ rg_location = "southindia"
 # AZURE DNS (Domain Name Service)
 #----------------------------------------------------------------------------
 
+pub_dnszone01_name = "cloudboy.in"
+pub_dnszone01_a_record = {
 
+    "0" = ["www","300",["1.2.3.4"]]
+}
+
+pub_dnszone01_cname_record = {
+
+    "0" = ["demo", "3600", "tempwebsite.testsite.com" ]
+
+
+}
 
 #-----------------------------------------------------------------------------
 # AZURE FRONT DOOR
