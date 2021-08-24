@@ -37,6 +37,15 @@ pub_dnszone01_cname_record = {
 # AZURE STORAGE
 #----------------------------------------------------------------------------
 
+strg_account_name           = "cloudboystrg01"
+strg_account_tier           = "Standard"
+strg_account_type           = "LRS"
+strg_account_kind           = "StorageV2"
+strg_account_access_tier    = "Hot"
+strg_container_name         = ["cbsa01ctr01","cbsa01ctr02","cbsa01ctr03"]
+strg_container_access_type  = "private"
+strg_share_name             = "appshare"
+strg_share_quota            = "10"
 
 
 #-----------------------------------------------------------------------------

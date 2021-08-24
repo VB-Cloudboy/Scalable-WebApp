@@ -54,15 +54,13 @@ module "res_grp_01" {
 #----------------------------------------------------------------------------
 
 module "pub_dns_01" {
-  source = "./modules/tf-az-dns"
-  depends_on = [
-    module.res_grp_01
-  ]
-  dnsname = var.pub_dnszone01_name
-  dnsresgrp = var.rg_name
-  dnstags = local.common_tags
-  dns_a_record = var.pub_dnszone01_a_record
-  dns_cname_record = var.pub_dnszone01_cname_record
+  source              = "./modules/tf-az-dns"
+  depends_on          = [ module.res_grp_01 ]
+  dnsname             = var.pub_dnszone01_name
+  dnsresgrp           = var.rg_name
+  dnstags             = local.common_tags
+  dns_a_record        = var.pub_dnszone01_a_record
+  dns_cname_record    = var.pub_dnszone01_cname_record
 }
 
 
@@ -82,6 +80,23 @@ module "pub_dns_01" {
 # AZURE STORAGE SETUP
 #----------------------------------------------------------------------------
 
+module "storage_01" {
+  source                      = "./modules/tf-az-strg"
+  depends_on                  = [ module.res_grp_01 ]
+  strgacct_name               = var.strg_account_name
+  strgacct_resgrp_name        = var.rg_name
+  strgacct_tier               = var.strg_account_tier
+  strgacct_type               = var.strg_account_type
+  strgacct_kind               = var.strg_account_kind
+  strgacct_access_tier        = var.strg_account_access_tier
+  strgacct_location           = var.rg_location
+  strg_cntr_name              = var.strg_container_name
+  strg_cntr_access_type       = var.strg_container_access_type
+  strgacct_tags               = local.common_tags
+  strgshr_name                = var.strg_share_name
+  strgshr_quota               = var.strg_share_quota
+  
+}
 
 
 #-----------------------------------------------------------------------------
